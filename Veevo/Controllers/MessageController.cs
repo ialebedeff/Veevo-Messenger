@@ -29,6 +29,12 @@ namespace Veevo.API.Controllers
             _dialogService = dialogService;
             _updateService = updateService;
         }
+
+        /// <summary>
+        /// Получить список сообщений с указанным пользователем
+        /// </summary>
+        /// <param name="messagesRequest"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost("GetMessages")]
         public IActionResult GetMessages(GetMessagesRequestModel messagesRequest)
@@ -44,6 +50,11 @@ namespace Veevo.API.Controllers
 
             return Ok(new MessagesResponseModel() { Messages = messages });
         }
+
+        /// <summary>
+        /// Получить список существующих диалогов
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpPost("GetDialogs")]
         public IActionResult GetDialogs()
@@ -60,6 +71,11 @@ namespace Veevo.API.Controllers
             return Ok(new GetDialogsResponseModel() { Dialogs = _dialogService.GetDialogs(user.Id) });
         }
 
+        /// <summary>
+        /// Отправить текстовое сообщение
+        /// </summary>
+        /// <param name="textMessage"></param>
+        /// <returns></returns>
         [Authorize]
         [HttpPost("SendMessageText")]
         public IActionResult SendMessage(SendMessageTextRequestModel textMessage)
@@ -87,7 +103,6 @@ namespace Veevo.API.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return BadRequest(new MessageSentResponseModel() { ErrorMessage = ex.Message });
             }
         }

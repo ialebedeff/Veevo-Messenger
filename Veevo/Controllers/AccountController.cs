@@ -23,12 +23,23 @@ namespace Veevo.Controllers
             _userService = userService;
             _mailService = mailService;
         }
+
+        /// <summary>
+        /// Получить пользователя по уникальному Id
+        /// </summary>
+        /// <param name="userRequestModel"></param>
+        /// <returns>Информация о пользователе</returns>
         [Authorize]
         [HttpPost("GetUserById")]
         public IActionResult GetUserById(GetUserRequestModel userRequestModel)
         { 
             return Ok(new UserResponseModel() { User = _userService.GetUserById(userRequestModel.Id) });
         }
+        /// <summary>
+        /// Верификация аккаунта пользователя по письму из почты
+        /// </summary>
+        /// <param name="code"></param>
+        /// <returns>Ok - если, код верный, BadRequest - если нет</returns>
         [HttpGet("Verify")]
         public IActionResult Verify(string code)
         {
@@ -44,18 +55,22 @@ namespace Veevo.Controllers
 
             return BadRequest(new VerificationResponseModel(ModelState) { ErrorMessage = "Не правильный код подтверждения."});
         }
+        /// <summary>
+        /// Метод необходим для получения информации о себе для авторизованного пользователя
+        /// </summary>
+        /// <returns></returns>
         [HttpGet("User")]
         [Authorize]
         public IActionResult GetUser()
         {
             return Ok(new UserResponseModel() { User = _userService.GetUserByEmail(User.Identity?.Name) });
         }
-        [HttpPost("GetUserByEmail")]
-        public IActionResult GetUserByEmail()
-        {
-            return Ok();
-        }
-        //[Authorize]
+
+        /// <summary>
+        /// Поиск пользователя по Username
+        /// </summary>
+        /// <param name="userRequestModel"></param>
+        /// <returns>Если Username пусто, то вернет BadRequest с описанием ошибки, в остальных случаях Ok, с возможно, пустой пользовательской моделью</returns>
         [HttpPost("GetUserByUsername")]
         public IActionResult GetUserByUsername(GetUserRequestModel userRequestModel)
         {
@@ -85,6 +100,12 @@ namespace Veevo.Controllers
             return Ok(response);
 
         }
+
+        /// <summary>
+        /// Проверка статуса аккаунта, Верифицирован или Нет
+        /// </summary>
+        /// <param name="verificationRequestModel"></param>
+        /// <returns>Ok - если почта была подтверждена, BadRequest если - нет</returns>
         [HttpPost("CheckVerification")]
         public IActionResult WaitVerification(VerificationRequestModel verificationRequestModel)
         {
@@ -96,30 +117,11 @@ namespace Veevo.Controllers
                 BadRequest(new CheckVerificationResponseModel() { IsAccountVerified = false });
         }
 
-        //[HttpPost("CreateAdmin")]
-        //[Authorize("Admin")]
-        //public IActionResult CreateAdminAccount(RegistrationRequestModel registrationRequestModel)
-        //{
-        //    if (!ModelState.IsValid)
-        //        return BadRequest(new Response(modelState: ModelState));
-
-        //    try
-        //    {
-        //        var user = _userService.CreateUser(registrationRequestModel, "Admin");
-
-        //        _userService.SaveChanges();
-
-        //        return Ok(new Response(user));
-        //    }
-        //    catch (EmailExistException ex)
-        //    {
-        //        return BadRequest(new Response(responseMessage: ex.Message));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(500, new Response(responseMessage: ex.Message));
-        //    }
-        //}
+        /// <summary>
+        /// Создание аккаунта и отправка письма на почту
+        /// </summary>
+        /// <param name="registrationRequestModel"></param>
+        /// <returns>Вернёт Ok, если аккаунт был создан и письмо с верификацией было успешно отправлено.</returns>
         [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateAccount(RegistrationRequestModel registrationRequestModel)
         {

@@ -36,7 +36,9 @@ namespace Veevo.BLL.Services
         {
             var listUpdates = updates.ToList();
 
-            listUpdates.ForEach(x => _context.Updates.Find(x.Id).IsUpdated = true);
+            listUpdates.ForEach(x => x.IsUpdated = true);
+
+            _context.Updates.UpdateRange(listUpdates);
         }
 
         public void SaveChanges()

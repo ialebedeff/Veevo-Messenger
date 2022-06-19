@@ -6,11 +6,5 @@ using System.Threading.Tasks;
 
 namespace Veevo.BLL.Interfaces
 {
-    public interface ILinkService
-    {
-        public void AddLink()
-        { 
-        
-        }
-    }
+
 }

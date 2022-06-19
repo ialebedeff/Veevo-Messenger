@@ -17,7 +17,11 @@ namespace Veevo.API.Controllers
             _userService = userService;
         }
 
-
+        /// <summary>
+        /// Авторизация пользователя
+        /// </summary>
+        /// <param name="loginRequestModel"></param>
+        /// <returns></returns>
         [HttpPost("SignIn")]
         public IActionResult SignIn(LoginRequestModel loginRequestModel)
         {

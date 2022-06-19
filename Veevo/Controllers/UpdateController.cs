@@ -18,6 +18,11 @@ namespace Veevo.API.Controllers
             _updateService = updateService;
             _userService = userService;
         }
+
+        /// <summary>
+        /// Получить список обновлений/уведомлений, и пометить его как уже не нужный
+        /// </summary>
+        /// <returns></returns>
         [Authorize]
         [HttpGet("GetUpdates")]
         public IActionResult GetUpdates()
@@ -30,8 +35,6 @@ namespace Veevo.API.Controllers
             var updates = _updateService.GetUpdates(user.Id);
                           _updateService.MarkAsUpdated(updates);
                           _updateService.SaveChanges();
-
-
 
             return Ok(new UpdateResponseModel() { Updates = updates });
         }
