@@ -9,11 +9,11 @@ This is the complete source code and the build instructions for the alpha versio
 ## Chat
 ![Чат](https://lh4.googleusercontent.com/goiyncZPMx88PWAlH3udNkbETvNnG-NhK50RBniG9QY-g7hNrebvGBYq8nuklAYS7P2OamIcf-fRuKIUquQJ=w1919-h896-rw "Чат")
 ## Using the API 
-'''C#
+```C#
    // Authorization
    await VeevoAPI.LoginAsync(new LoginRequestModel(Email, Password));
    // Getting User data
     await VeevoAPI.GetMeAsync();
    // Sending a Text Message
    await VeevoAPI.SendTextMessageAsync(sendMessageTextRequestModel);
-'''
+```
