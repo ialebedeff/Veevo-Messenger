@@ -4,4 +4,4 @@ This is the complete source code and the build instructions for the alpha versio
 
 ![Авторизация](https://lh4.googleusercontent.com/rsbdXuDbMUKl3Va79GVZ4nBKeNY7moqhrX0H_IM3zt4vv6EURhZH1omxIakhYhfqZDnyudmcwCJtJdbnZ4Zq=w1919-h896-rw "Veevo авторизация")
 ![Мессенджер](https://lh6.googleusercontent.com/3CePRK-rhl_m8RQMODqj3KSmjF3XC1NwYioDes8ppgVbwTM9rQAPx2eKuH92PBsWS0k=w1200-h630-p "Мессенджер")
-![Чат](https://lh6.googleusercontent.com/8pStnwi43VtF8DTL2RXfyN7Pay2eJn8hRt0ilVbdM8ZV0Q0i2j3DuBsEnc5-i8A1EXhHHR21ldBE6csy_pb2=w1919-h896-rw "Чат")
+![Чат](https://lh4.googleusercontent.com/goiyncZPMx88PWAlH3udNkbETvNnG-NhK50RBniG9QY-g7hNrebvGBYq8nuklAYS7P2OamIcf-fRuKIUquQJ=w1919-h896-rw "Чат")
