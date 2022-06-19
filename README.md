@@ -24,12 +24,20 @@ This is the complete source code and the build instructions for the alpha versio
 ```C#
    // Authorization
    await VeevoAPI.LoginAsync(new LoginRequestModel(Email, Password));
+   
+   
    // Getting User data
     await VeevoAPI.GetMeAsync();
+    
+    
    // Sending a Text Message
    await VeevoAPI.SendTextMessageAsync(new SendMessageTextRequestModel() { ToUserId = 1, Text = "Привет" });
+   
+   
    // Getting a Dialogs data
    await VeevoAPI.GetDialogs();
+   
+   
    // Creating an Account
    await VeevoAPI.CreateAccountAsync(
                             new RegistrationRequestModel()
@@ -39,12 +47,20 @@ This is the complete source code and the build instructions for the alpha versio
                                 ConfirmPassword = this.ConfirmPassword,
                             }
                         );
+                        
+                        
    // Getting User Data by Username
    await VeevoAPI.GetUserByUsernameAsync(new UserRequestModel() { Username = "#imp0$t0r"});
+   
+   
    // Getting User Data by Id
    await VeevoAPI.GetUserById(new UserRequestModel() { Id = 1 });
+   
+   
    // Getting Update Data
    await VeevoAPI.GetUpdates();
+   
+   
    // Getting Messages Data with current user
    await VeevoAPI.GetMessages(new GetMessagesRequestModel() { UserId = 1 });
 ```
