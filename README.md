@@ -15,5 +15,5 @@ This is the complete source code and the build instructions for the alpha versio
    // Getting User data
     await VeevoAPI.GetMeAsync();
    // Sending a Text Message
-   await VeevoAPI.SendTextMessageAsync(sendMessageTextRequestModel);
+   await VeevoAPI.SendTextMessageAsync(new SendMessageTextRequestModel() { ToUserId = 1, Text = "Привет" });
 ```
